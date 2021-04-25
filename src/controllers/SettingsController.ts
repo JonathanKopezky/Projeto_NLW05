@@ -1,11 +1,10 @@
-import { Request, Response } from "express";
-import { SettingsService} from "../services/SettingsServices";
+import { request, Request, response, Response } from "express";
+import { SettingsService } from "../services/SettingsService";
 
 class SettingsController {
     async create(request: Request, response: Response) {
         const { chat, username } = request.body;
 
-       
         const settingsServices = new SettingsService();
 
         try {
@@ -17,6 +16,26 @@ class SettingsController {
                 message: err.message,
             });
         }
+    }
+    async findByUsername(request: Request, response: Response){
+        const {username} = request.params;
+
+        const settingsServices = new SettingsService();
+
+        const settings = await settingsServices.findByUsername(username);
+
+        return response.json(settings);
+    }
+    
+    async update(request: Request, response: Response){
+        const {username} = request.params;
+        const{chat} = request.body;
+
+        const settingsServices = new SettingsService();
+
+        const settings = await settingsServices.update(username,chat);
+
+        return response.json(settings);
     }
 }
 

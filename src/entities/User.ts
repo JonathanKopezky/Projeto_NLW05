@@ -6,9 +6,6 @@ import {
     PrimaryColumn
 } from "typeorm"
 
-
-
-
 @Entity("users")
 class User {
 

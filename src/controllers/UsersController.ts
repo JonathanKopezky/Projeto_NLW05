@@ -1,5 +1,5 @@
 import {Request, Response} from "express"
-import { UsersService } from "../services/UsersServices";
+import { UsersService } from "../services/UsersService";
 
 class UsersController{
 
@@ -13,4 +13,4 @@ class UsersController{
     }
 }
 
-export { UsersController}
+export {UsersController}
